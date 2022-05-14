@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\WorkProjects\Test\CryptoInfo\CryptoInfo\obj\Debug\
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\
 CryptoInfo
 none
 false
 DEBUG;TRACE
-C:\WorkProjects\Test\CryptoInfo\CryptoInfo\App.xaml
-1219584333
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\App.xaml
+1-1089536010
 
-6-793535042
+6-1857957331
 13-38814620
-MainWindow.xaml;
+Views\Windows\MainWindow.xaml;
 
-True
+False
 
