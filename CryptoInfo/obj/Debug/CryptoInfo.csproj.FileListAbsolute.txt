@@ -1,0 +1,17 @@
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\bin\Debug\CryptoInfo.exe.config
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\bin\Debug\CryptoInfo.exe
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\bin\Debug\CryptoInfo.pdb
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\CryptoInfo.csproj.AssemblyReference.cache
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\CryptoInfo.csproj.SuggestedBindingRedirects.cache
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\Views\Windows\MainWindow.g.cs
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\App.g.cs
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\CryptoInfo_MarkupCompile.cache
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\CryptoInfo_MarkupCompile.lref
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\Views\Windows\MainWindow.baml
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\CryptoInfo.g.resources
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\CryptoInfo.Properties.Resources.resources
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\CryptoInfo.csproj.GenerateResource.cache
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\CryptoInfo.csproj.CoreCompileInputs.cache
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\CryptoInfo.exe
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\CryptoInfo.pdb
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\GeneratedInternalTypeHelper.g.cs
