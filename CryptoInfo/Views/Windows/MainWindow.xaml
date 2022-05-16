@@ -11,11 +11,39 @@
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
-    <Grid>
-        <TextBox HorizontalAlignment="Left" 
-                   TextWrapping="Wrap" 
-                   Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" 
-                   VerticalAlignment="Top"/>
-
-    </Grid>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Menu">
+                <MenuItem Header="exit"/>
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="About"/>
+            </MenuItem>
+        </Menu>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <TextBlock Text="{Binding Status} " MaxWidth="350" MinWidth="150"/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <ProgressBar Width="120" Height="16" Value="30"/>
+            </StatusBarItem>
+        </StatusBar>
+        <TabControl>
+            <TabItem Header="Top 10 cryptocurrencies">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="63*"/>
+                        <RowDefinition Height="325*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="157*"/>
+                        <ColumnDefinition Width="673*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                </Grid>
+            </TabItem>
+            <TabItem Header="Cryptocurrency info"></TabItem>
+            <TabItem Header="Search cryptocurrency"></TabItem>
+        </TabControl>
+    </DockPanel>
 </Window>
