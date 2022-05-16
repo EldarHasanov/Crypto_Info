@@ -14,7 +14,7 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Menu">
-                <MenuItem Header="exit"/>
+                <MenuItem Header="Exit" Command="{Binding CloseApplicationCommand}"/>
             </MenuItem>
             <MenuItem Header="Help">
                 <MenuItem Header="About"/>
@@ -22,7 +22,7 @@
         </Menu>
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem>
-                <TextBlock Text="{Binding Status} " MaxWidth="350" MinWidth="150"/>
+                <TextBlock Text="{Binding Status}" MaxWidth="350" MinWidth="150"/>
             </StatusBarItem>
             <StatusBarItem>
                 <ProgressBar Width="120" Height="16" Value="30"/>
