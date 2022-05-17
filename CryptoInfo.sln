@@ -5,6 +5,10 @@ VisualStudioVersion = 17.2.32505.173
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoInfo", "CryptoInfo\CryptoInfo.csproj", "{D06980C8-D7DB-4088-9282-262C18FE533D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{315CB5C6-C4AE-449B-B94C-BD9636AC5D49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoInfoConsole", "TestConsoleApp\CryptoInfoConsole.csproj", "{6AB92F41-C9DC-41BD-9433-52BF08C1C0D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +19,16 @@ Global
 		{D06980C8-D7DB-4088-9282-262C18FE533D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D06980C8-D7DB-4088-9282-262C18FE533D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D06980C8-D7DB-4088-9282-262C18FE533D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AB92F41-C9DC-41BD-9433-52BF08C1C0D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AB92F41-C9DC-41BD-9433-52BF08C1C0D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AB92F41-C9DC-41BD-9433-52BF08C1C0D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AB92F41-C9DC-41BD-9433-52BF08C1C0D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6AB92F41-C9DC-41BD-9433-52BF08C1C0D9} = {315CB5C6-C4AE-449B-B94C-BD9636AC5D49}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F9CEAF7E-EB06-4BE0-94BA-9A755A222F30}

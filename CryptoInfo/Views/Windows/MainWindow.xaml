@@ -5,16 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:CryptoInfo.ViewModel"
         xmlns:l="clr-namespace:CryptoInfo"
+        xmlns:cmd="clr-namespace:CryptoInfo.Infrastructure.Commands"
         mc:Ignorable="d"
         Title="{Binding Title}"
         Height="450" Width="800">
+    
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
+    <Window.Resources>
+        <cmd:CloseApplicationCommand x:Key="CloseApplicationCommand"></cmd:CloseApplicationCommand>
+    </Window.Resources>
+    <Window.InputBindings>
+        <KeyBinding Modifiers="Control" Key="Q" Command="{StaticResource CloseApplicationCommand}"></KeyBinding>
+    </Window.InputBindings>
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Menu">
-                <MenuItem Header="Exit" Command="{Binding CloseApplicationCommand}"/>
+                <MenuItem
+                    Command="{StaticResource CloseApplicationCommand}">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Exit" HorizontalAlignment="Left" Margin="0,0,15,0"/>
+                            <TextBlock Text="Q+Ctrl" Foreground="Gray" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="Help">
                 <MenuItem Header="About"/>
