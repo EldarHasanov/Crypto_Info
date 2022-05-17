@@ -15,8 +15,3 @@ C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\CryptoInfo.cspr
 C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\CryptoInfo.exe
 C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\CryptoInfo.pdb
 C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\bin\Debug\FontAwesome5.dll
-C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\bin\Debug\FontAwesome5.Net.dll
-C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\bin\Debug\FontAwesome5.xml
-C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\bin\Debug\FontAwesome5.Net.xml
-C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\CryptoInfo.csproj.CopyComplete
