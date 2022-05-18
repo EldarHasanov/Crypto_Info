@@ -2,6 +2,6 @@
 
 internal class AssetsRootObjectWithList
 {
-    public Cryptocurrency[] data { get; set; }
+    public List<Cryptocurrency> data { get; set; }
     public long timestamp { get; set; }
 }

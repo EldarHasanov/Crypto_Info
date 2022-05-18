@@ -23,6 +23,7 @@ namespace CryptoInfoConsole
 
             AssetsRootObjectWithList rootobject = JsonSerializer.Deserialize<AssetsRootObjectWithList>(str);
             var a = rootobject.data;
+            
             var b = a[1];
 
             var resurs = client.GetAsync(data_url + "/assets/" + a[1].id).Result;

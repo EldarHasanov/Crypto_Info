@@ -46,17 +46,19 @@
         </StatusBar>
         <TabControl>
             <TabItem Header="Top 10 cryptocurrencies">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="63*"/>
-                        <RowDefinition Height="325*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="157*"/>
-                        <ColumnDefinition Width="673*"/>
-                    </Grid.ColumnDefinitions>
-                    
-                </Grid>
+                
+                <DataGrid ItemsSource="{Binding TopTenCryptocurrencies}"
+                          AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Rank" Binding="{Binding rank}"/>
+                        <DataGridTextColumn Header="ID" Binding="{Binding id}"/>
+                        <DataGridTextColumn Header="Symbol" Binding="{Binding symbol}"/>
+                        <DataGridTextColumn Header="Name" Binding="{Binding name}"/>
+                        <DataGridTextColumn Header="Price" Binding="{Binding priceUsd}"/>
+                        <DataGridTextColumn Header="Change per 24 hours" Binding="{Binding changePercent24Hr}"/>
+                    </DataGrid.Columns>
+
+                </DataGrid>
             </TabItem>
             <TabItem Header="Cryptocurrency info"></TabItem>
             <TabItem Header="Search cryptocurrency"></TabItem>
