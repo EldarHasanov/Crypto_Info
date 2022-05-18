@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\App.xaml
-1-1089536010
+4-736102281
 
-141757571917
+171721290385
 23-831850002
-Views\Windows\MainWindow.xaml;
+Theme\MenuButtonTheme.xaml;Theme\TextBoxTheme.xaml;Views\HomeView.xaml;Views\Windows\MainWindow.xaml;
 
 True
 

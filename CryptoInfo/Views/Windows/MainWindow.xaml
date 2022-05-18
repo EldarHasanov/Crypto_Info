@@ -4,22 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:CryptoInfo.ViewModel"
+        xmlns:cryp="clr-namespace:CryptoInfo.Models"
         xmlns:l="clr-namespace:CryptoInfo"
         xmlns:cmd="clr-namespace:CryptoInfo.Infrastructure.Commands"
         mc:Ignorable="d"
-        Title="{Binding Title}"
-        Height="450" Width="800">
+        Height="600" Width="920"
+        WindowStyle="None"
+        Background="Transparent"
+        ResizeMode="NoResize">
+
     
-    <Window.DataContext>
-        <vm:MainWindowViewModel/>
-    </Window.DataContext>
-    <Window.Resources>
-        <cmd:CloseApplicationCommand x:Key="CloseApplicationCommand"></cmd:CloseApplicationCommand>
-    </Window.Resources>
-    <Window.InputBindings>
-        <KeyBinding Modifiers="Control" Key="Q" Command="{StaticResource CloseApplicationCommand}"></KeyBinding>
-    </Window.InputBindings>
-    <DockPanel>
+    
+    <!--DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Menu">
                 <MenuItem
@@ -48,20 +44,98 @@
             <TabItem Header="Top 10 cryptocurrencies">
                 
                 <DataGrid ItemsSource="{Binding TopTenCryptocurrencies}"
-                          AutoGenerateColumns="False">
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True"
+                          AlternatingRowBackground="DarkGray"
+                          GridLinesVisibility="None">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Rank" Binding="{Binding rank}"/>
-                        <DataGridTextColumn Header="ID" Binding="{Binding id}"/>
-                        <DataGridTextColumn Header="Symbol" Binding="{Binding symbol}"/>
-                        <DataGridTextColumn Header="Name" Binding="{Binding name}"/>
-                        <DataGridTextColumn Header="Price" Binding="{Binding priceUsd}"/>
-                        <DataGridTextColumn Header="Change per 24 hours" Binding="{Binding changePercent24Hr}"/>
+                        <DataGridTextColumn Header="Rank" Binding="{Binding rank}" Width="*"/>
+                        <DataGridTextColumn Header="ID" Binding="{Binding id}" Width="*"/>
+                        <DataGridTextColumn Header="Symbol" Binding="{Binding symbol}" Width="*"/>
+                        <DataGridTextColumn Header="Name" Binding="{Binding name}" Width="*"/>
+                        <DataGridTextColumn Header="Price" Binding="{Binding priceUsd}" Width="*"/>
+                        <DataGridTextColumn Header="Change per 24 hours" Binding="{Binding changePercent24Hr}" Width="*"/>
+
                     </DataGrid.Columns>
 
                 </DataGrid>
             </TabItem>
-            <TabItem Header="Cryptocurrency info"></TabItem>
+            <TabItem Header="Cryptocurrency info">
+                <Grid>
+                    
+                </Grid>
+            </TabItem>
             <TabItem Header="Search cryptocurrency"></TabItem>
         </TabControl>
-    </DockPanel>
+    </DockPanel-->
+    <Border Background="#272537"
+            CornerRadius="20">
+        <Border.DataContext>
+            <vm:MainWindowViewModel/>
+        </Border.DataContext>
+        <Border.Resources>
+            <cmd:CloseApplicationCommand x:Key="CloseApplicationCommand"></cmd:CloseApplicationCommand>
+        </Border.Resources>
+        <Border.InputBindings>
+            <KeyBinding Modifiers="Control" Key="Q" Command="{StaticResource CloseApplicationCommand}"></KeyBinding>
+        </Border.InputBindings>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text ="{Binding Title}"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Foreground="AliceBlue"
+                       FontSize="24"/>
+
+            <StackPanel Grid.Row="1">
+                <RadioButton Content="Home"
+                             Height="50"
+                             Foreground="AliceBlue"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"/>
+
+                <RadioButton Content="Cryptocurrency info"
+                             Height="50"
+                             Foreground="AliceBlue"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"/>
+
+                <RadioButton Content="Search cryptocurrency"
+                             Height="50"
+                             Foreground="AliceBlue"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"/>
+
+                <RadioButton Content="Exit"
+                             Height="50"
+                             Foreground="AliceBlue"
+                             FontSize="14"
+                             VerticalAlignment="Bottom"
+                             Command="{Binding CloseApplicationCommand}"
+                             Style="{StaticResource MenuButtonTheme}"/>
+            </StackPanel>
+
+            <TextBox Width="250"
+                     Height="40"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Left"
+                     Margin="5"
+                     Grid.Column="1"
+                     Style="{StaticResource TextBoxTheme}"></TextBox>
+
+            <ContentControl Grid.Column="1"
+                            Grid.Row="1"
+                            Margin="10"
+                            Content="{Binding CurrentView}"/>
+        </Grid>
+    </Border>
 </Window>

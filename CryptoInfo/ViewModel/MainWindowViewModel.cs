@@ -9,18 +9,36 @@ using CryptoInfo.Infrastructure.Commands;
 using CryptoInfo.Models;
 using CryptoInfo.ViewModel.Base;
 using System.Text.Json;
+using System.Windows.Media;
 
 namespace CryptoInfo.ViewModel
 {
     internal class MainWindowViewModel : ViewModelBase
     {
         private const string coincap_assets_url = @"http://api.coincap.io/v2/assets";
-        public List<Cryptocurrency> TopTenCryptocurrencies { get; set; }
+        public List<Cryptocurrency> Cryptocurrencies { get; set; }
+
+        public HomeViewModel HomeVM { get; set; }
+
+        #region Current View
+
+        private object _currentView;
+
+        public object CurrentView
+        {
+            get { return _currentView; }
+            set
+            {
+                _currentView = value;
+                OnPropertyChanged();
+            }
+        }
+        #endregion
 
         #region Window header
 
         /// <summary>Title of window</summary>
-        private string _Title = "Top 10 cryptocurrencies"; 
+        private string _Title = "CryptInfo"; 
 
         /// <summary>Title of window</summary>
         public string Title
@@ -84,12 +102,7 @@ namespace CryptoInfo.ViewModel
 
                         AssetsRootObjectWithList rootobject = JsonSerializer.Deserialize<AssetsRootObjectWithList>(jsonStringResult);
 
-                        TopTenCryptocurrencies = rootobject.data.Take(10).ToList();
-                        foreach (var element in TopTenCryptocurrencies)
-                        {
-                            element.priceUsd = element.priceUsd.Substring(0, 10) + " USD";
-                            element.changePercent24Hr = element.changePercent24Hr.Substring(0, 10) + " %";
-                        }
+                        Cryptocurrencies = rootobject.data.ToList();
                     }
                     else
                     {
@@ -104,6 +117,13 @@ namespace CryptoInfo.ViewModel
 
             #endregion
 
+
+            #endregion
+
+            #region Home View
+
+            HomeVM = new HomeViewModel(Cryptocurrencies.Take(10).ToList());
+            CurrentView = HomeVM;
 
             #endregion
         }

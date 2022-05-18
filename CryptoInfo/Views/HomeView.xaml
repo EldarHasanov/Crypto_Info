@@ -1,0 +1,139 @@
+﻿<UserControl x:Class="CryptoInfo.Views.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CryptoInfo.Views"
+             xmlns:VM="clr-namespace:CryptoInfo.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="505" d:DesignWidth="700">
+    <StackPanel>
+        <StackPanel.DataContext>
+            <VM:HomeViewModel/>
+        </StackPanel.DataContext>
+        <TextBlock Text="Top 10 cryptocurrency"
+                   Foreground="AliceBlue"
+                   FontSize="30"
+                   HorizontalAlignment="Left"
+                   Margin="0,0,0,20"/>
+
+        <StackPanel Orientation="Horizontal">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="Margin" Value="0,0,20,0"></Setter>
+                </Style>
+            </StackPanel.Resources>
+            <Border Width="340"
+                    Height="130">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                        <GradientStop Color="#5bc3ff" Offset="0.0"/>
+                        <GradientStop Color="#399ffd" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <Border.Clip>
+                    <RectangleGeometry RadiusX="10"
+                                       RadiusY="10"
+                                       Rect="0,0,340,130"/>
+                </Border.Clip>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="170"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <TextBlock FontSize="90"
+                                 Background="Transparent"
+                                 Foreground="AliceBlue"
+                                 Text="{Binding TopTenCryptocurrencies[0].symbol}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <TextBlock FontSize="45"
+                                   Background="Transparent"
+                                   Foreground="AliceBlue"
+                                   Text="{Binding TopTenCryptocurrencies[0].name}"/>
+                        <TextBlock FontSize="45"
+                                   Background="Transparent"
+                                   Foreground="AliceBlue"
+                                   Text="{Binding TopTenCryptocurrencies[0].priceUsd}"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <Border Width="340"
+                    Height="130">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                        <GradientStop Color="#ffc554" Offset="0.0"/>
+                        <GradientStop Color="#fcb538" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <Border.Clip>
+                    <RectangleGeometry RadiusX="10"
+                                       RadiusY="10"
+                                       Rect="0,0,340,130"/>
+                </Border.Clip>
+            </Border>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    Margin="0,20,0,0">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="Margin" Value="0,0,20,0"></Setter>
+                </Style>
+            </StackPanel.Resources>
+            <Border Width="160"
+                    Height="130"
+                    Background="#22202f"
+                    CornerRadius="10">
+            </Border>
+            <Border Width="160"
+                    Height="130"
+                    Background="#22202f"
+                    CornerRadius="10">
+            </Border>
+            <Border Width="160"
+                    Height="130"
+                    Background="#22202f"
+                    CornerRadius="10">
+            </Border>
+            <Border Width="160"
+                    Height="130"
+                    Background="#22202f"
+                    CornerRadius="10">
+            </Border>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    Margin="0,20,0,0">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="Margin" Value="0,0,20,0"></Setter>
+                </Style>
+            </StackPanel.Resources>
+            <Border Width="160"
+                    Height="130"
+                    Background="#22202f"
+                    CornerRadius="10">
+            </Border>
+            <Border Width="160"
+                    Height="130"
+                    Background="#22202f"
+                    CornerRadius="10">
+            </Border>
+            <Border Width="160"
+                    Height="130"
+                    Background="#22202f"
+                    CornerRadius="10">
+            </Border>
+            <Border Width="160"
+                    Height="130"
+                    Background="#22202f"
+                    CornerRadius="10">
+            </Border>
+        </StackPanel>
+
+            
+    </StackPanel>
+</UserControl>
