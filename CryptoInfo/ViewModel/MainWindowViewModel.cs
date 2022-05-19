@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows;
 using System.Windows.Input;
 using CryptoInfo.Infrastructure.Commands;
@@ -10,15 +11,19 @@ using CryptoInfo.Models;
 using CryptoInfo.ViewModel.Base;
 using System.Text.Json;
 using System.Windows.Media;
+using CryptoInfo.DAL;
+using CryptoInfo.Infrastructure.Commands.Base;
 
 namespace CryptoInfo.ViewModel
 {
-    internal class MainWindowViewModel : ViewModelBase
+    internal class MainWindowViewModel : ViewModelBase, ICryptoList
     {
         private const string coincap_assets_url = @"http://api.coincap.io/v2/assets";
         public List<Cryptocurrency> Cryptocurrencies { get; set; }
 
         public HomeViewModel HomeVM { get; set; }
+
+        public InfoWindowView InfoVM { get; set; }
 
         #region Current View
 
@@ -76,6 +81,14 @@ namespace CryptoInfo.ViewModel
         }
         #endregion
 
+        #region ChangeView
+
+        public BaseCommand HomeViewCommand { get; set; }
+
+        public BaseCommand InfoViewCommand { get; set; }
+
+        #endregion
+
         #endregion
         public MainWindowViewModel()
         {
@@ -84,12 +97,36 @@ namespace CryptoInfo.ViewModel
             CloseApplicationCommand =
                 new LambdaCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
 
+            HomeViewCommand = new LambdaCommand(o =>
+            {
+                CurrentView = HomeVM;
+            });
+
+            InfoViewCommand = new LambdaCommand(o =>
+            {
+                CurrentView = InfoVM;
+            });
+
             #endregion
 
             #region HTTP requests
 
-            #region TopTenCryptocurrencies
+            Cryptocurrencies = GetCryptocurrenciesList();
 
+
+            #endregion
+
+            #region Home View
+
+            HomeVM = new HomeViewModel();
+            InfoVM = new InfoWindowView("bitcoin");
+            CurrentView = HomeVM;
+
+            #endregion
+        }
+
+        public List<Cryptocurrency> GetCryptocurrenciesList()
+        {
             try
             {
                 var client = new HttpClient();
@@ -102,7 +139,8 @@ namespace CryptoInfo.ViewModel
 
                         AssetsRootObjectWithList rootobject = JsonSerializer.Deserialize<AssetsRootObjectWithList>(jsonStringResult);
 
-                        Cryptocurrencies = rootobject.data.ToList();
+                         var Crypt = rootobject.data.ToList();
+                         return Crypt;
                     }
                     else
                     {
@@ -114,18 +152,7 @@ namespace CryptoInfo.ViewModel
             {
                 _Status = e.Message;
             }
-
-            #endregion
-
-
-            #endregion
-
-            #region Home View
-
-            HomeVM = new HomeViewModel(Cryptocurrencies.Take(10).ToList());
-            CurrentView = HomeVM;
-
-            #endregion
+            throw new NotImplementedException();
         }
     }
 }

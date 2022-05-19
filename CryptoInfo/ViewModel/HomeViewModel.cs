@@ -5,26 +5,23 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using CryptoInfo.DAL;
 using CryptoInfo.Models;
+using CryptoInfo.ViewModel.Base;
 
 namespace CryptoInfo.ViewModel
 {
-    internal class HomeViewModel
+    internal class HomeViewModel : ViewModelBase, ICryptoList
     {
         private const string coincap_assets_url = @"http://api.coincap.io/v2/assets";
         public List<Cryptocurrency> TopTenCryptocurrencies { get; set; }
 
-        public HomeViewModel(List<Cryptocurrency> topTenCryptocurrencies)
+        public HomeViewModel()
         {
-            TopTenCryptocurrencies = topTenCryptocurrencies;
-            foreach (var element in TopTenCryptocurrencies)
-            {
-                element.priceUsd = element.priceUsd.Substring(0, 8) + " USD";
-                element.changePercent24Hr = element.changePercent24Hr.Substring(0, 5) + " %";
-            }
+            TopTenCryptocurrencies = GetCryptocurrenciesList();
         }
 
-        public HomeViewModel()
+        public List<Cryptocurrency> GetCryptocurrenciesList()
         {
             var client = new HttpClient();
             if (client != null)
@@ -36,18 +33,21 @@ namespace CryptoInfo.ViewModel
 
                     AssetsRootObjectWithList rootobject = JsonSerializer.Deserialize<AssetsRootObjectWithList>(jsonStringResult);
 
-                    TopTenCryptocurrencies = rootobject.data.Take(10).ToList();
-                    foreach (var element in TopTenCryptocurrencies)
+                    var listOfCryptocurrencies = rootobject.data.Take(10).ToList();
+                    foreach (var element in listOfCryptocurrencies)
                     {
                         element.priceUsd = element.priceUsd.Substring(0, 8) + " USD";
                         element.changePercent24Hr = element.changePercent24Hr.Substring(0, 5) + " %";
                     }
+
+                    return listOfCryptocurrencies;
                 }
                 else
                 {
                     throw new FieldAccessException("Something wrong with url");
                 }
             }
+            throw new NotImplementedException();
         }
     }
 }

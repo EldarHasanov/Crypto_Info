@@ -103,12 +103,14 @@
                              Height="50"
                              Foreground="AliceBlue"
                              FontSize="14"
+                             Command="{Binding HomeViewCommand}"
                              Style="{StaticResource MenuButtonTheme}" Checked="RadioButton_Checked"/>
 
                 <RadioButton Content="Cryptocurrency info"
                              Height="50"
                              Foreground="AliceBlue"
                              FontSize="14"
+                             Command="{Binding InfoViewCommand}"
                              Style="{StaticResource MenuButtonTheme}"/>
 
                 <RadioButton Content="Search cryptocurrency"

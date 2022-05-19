@@ -39,3 +39,5 @@ C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\App.baml
 C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\Theme\TextBoxTheme.baml
 C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\Views\HomeView.g.cs
 C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\Views\HomeView.baml
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\Views\InfoView.g.cs
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\Views\InfoView.baml
