@@ -1,21 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net.Http;
 using System.Windows;
 using System.Windows.Input;
 using CryptoInfo.Infrastructure.Commands;
+using CryptoInfo.Models;
 using CryptoInfo.ViewModel.Base;
+using System.Text.Json;
+using System.Windows.Media;
 
 namespace CryptoInfo.ViewModel
 {
     internal class MainWindowViewModel : ViewModelBase
     {
+        private const string coincap_assets_url = @"http://api.coincap.io/v2/assets";
+        public List<Cryptocurrency> Cryptocurrencies { get; set; }
+
+        public HomeViewModel HomeVM { get; set; }
+
+        #region Current View
+
+        private object _currentView;
+
+        public object CurrentView
+        {
+            get { return _currentView; }
+            set
+            {
+                _currentView = value;
+                OnPropertyChanged();
+            }
+        }
+        #endregion
+
         #region Window header
 
         /// <summary>Title of window</summary>
-        private string _Title = "Top 10 cryptocurrencies"; 
+        private string _Title = "CryptInfo"; 
 
         /// <summary>Title of window</summary>
         public string Title
@@ -61,7 +84,46 @@ namespace CryptoInfo.ViewModel
             CloseApplicationCommand =
                 new LambdaCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
 
+            #endregion
 
+            #region HTTP requests
+
+            #region TopTenCryptocurrencies
+
+            try
+            {
+                var client = new HttpClient();
+                if (client != null)
+                {
+                    var responseMessage = client.GetAsync(coincap_assets_url).Result;
+                    if (responseMessage.IsSuccessStatusCode)
+                    {
+                        var jsonStringResult = responseMessage.Content.ReadAsStringAsync().Result;
+
+                        AssetsRootObjectWithList rootobject = JsonSerializer.Deserialize<AssetsRootObjectWithList>(jsonStringResult);
+
+                        Cryptocurrencies = rootobject.data.ToList();
+                    }
+                    else
+                    {
+                        throw new FieldAccessException("Something wrong with url");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                _Status = e.Message;
+            }
+
+            #endregion
+
+
+            #endregion
+
+            #region Home View
+
+            HomeVM = new HomeViewModel(Cryptocurrencies.Take(10).ToList());
+            CurrentView = HomeVM;
 
             #endregion
         }

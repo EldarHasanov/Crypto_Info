@@ -1,0 +1,53 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Text;
+using System.Text.Json;
+using System.Threading.Tasks;
+using CryptoInfo.Models;
+
+namespace CryptoInfo.ViewModel
+{
+    internal class HomeViewModel
+    {
+        private const string coincap_assets_url = @"http://api.coincap.io/v2/assets";
+        public List<Cryptocurrency> TopTenCryptocurrencies { get; set; }
+
+        public HomeViewModel(List<Cryptocurrency> topTenCryptocurrencies)
+        {
+            TopTenCryptocurrencies = topTenCryptocurrencies;
+            foreach (var element in TopTenCryptocurrencies)
+            {
+                element.priceUsd = element.priceUsd.Substring(0, 8) + " USD";
+                element.changePercent24Hr = element.changePercent24Hr.Substring(0, 5) + " %";
+            }
+        }
+
+        public HomeViewModel()
+        {
+            var client = new HttpClient();
+            if (client != null)
+            {
+                var responseMessage = client.GetAsync(coincap_assets_url).Result;
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var jsonStringResult = responseMessage.Content.ReadAsStringAsync().Result;
+
+                    AssetsRootObjectWithList rootobject = JsonSerializer.Deserialize<AssetsRootObjectWithList>(jsonStringResult);
+
+                    TopTenCryptocurrencies = rootobject.data.Take(10).ToList();
+                    foreach (var element in TopTenCryptocurrencies)
+                    {
+                        element.priceUsd = element.priceUsd.Substring(0, 8) + " USD";
+                        element.changePercent24Hr = element.changePercent24Hr.Substring(0, 5) + " %";
+                    }
+                }
+                else
+                {
+                    throw new FieldAccessException("Something wrong with url");
+                }
+            }
+        }
+    }
+}

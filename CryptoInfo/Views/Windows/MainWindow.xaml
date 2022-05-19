@@ -4,17 +4,30 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:CryptoInfo.ViewModel"
+        xmlns:cryp="clr-namespace:CryptoInfo.Models"
         xmlns:l="clr-namespace:CryptoInfo"
+        xmlns:cmd="clr-namespace:CryptoInfo.Infrastructure.Commands"
         mc:Ignorable="d"
-        Title="{Binding Title}"
-        Height="450" Width="800">
-    <Window.DataContext>
-        <vm:MainWindowViewModel/>
-    </Window.DataContext>
-    <DockPanel>
+        Height="600" Width="920"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True" 
+        ResizeMode="NoResize">
+
+    
+    
+    <!--DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Menu">
-                <MenuItem Header="Exit" Command="{Binding CloseApplicationCommand}"/>
+                <MenuItem
+                    Command="{StaticResource CloseApplicationCommand}">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Exit" HorizontalAlignment="Left" Margin="0,0,15,0"/>
+                            <TextBlock Text="Q+Ctrl" Foreground="Gray" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="Help">
                 <MenuItem Header="About"/>
@@ -30,20 +43,101 @@
         </StatusBar>
         <TabControl>
             <TabItem Header="Top 10 cryptocurrencies">
+                
+                <DataGrid ItemsSource="{Binding TopTenCryptocurrencies}"
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True"
+                          AlternatingRowBackground="DarkGray"
+                          GridLinesVisibility="None">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Rank" Binding="{Binding rank}" Width="*"/>
+                        <DataGridTextColumn Header="ID" Binding="{Binding id}" Width="*"/>
+                        <DataGridTextColumn Header="Symbol" Binding="{Binding symbol}" Width="*"/>
+                        <DataGridTextColumn Header="Name" Binding="{Binding name}" Width="*"/>
+                        <DataGridTextColumn Header="Price" Binding="{Binding priceUsd}" Width="*"/>
+                        <DataGridTextColumn Header="Change per 24 hours" Binding="{Binding changePercent24Hr}" Width="*"/>
+
+                    </DataGrid.Columns>
+
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Cryptocurrency info">
                 <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="63*"/>
-                        <RowDefinition Height="325*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="157*"/>
-                        <ColumnDefinition Width="673*"/>
-                    </Grid.ColumnDefinitions>
                     
                 </Grid>
             </TabItem>
-            <TabItem Header="Cryptocurrency info"></TabItem>
             <TabItem Header="Search cryptocurrency"></TabItem>
         </TabControl>
-    </DockPanel>
+    </DockPanel-->
+    <Border Background="#272537"
+            CornerRadius="20">
+        <Border.DataContext>
+            <vm:MainWindowViewModel/>
+        </Border.DataContext>
+        <Border.Resources>
+            <cmd:CloseApplicationCommand x:Key="CloseApplicationCommand"></cmd:CloseApplicationCommand>
+        </Border.Resources>
+        <Border.InputBindings>
+            <KeyBinding Modifiers="Control" Key="Q" Command="{StaticResource CloseApplicationCommand}"></KeyBinding>
+        </Border.InputBindings>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text ="{Binding Title}"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Foreground="AliceBlue"
+                       FontSize="24"/>
+
+            <StackPanel Grid.Row="1">
+                <RadioButton Content="Home"
+                             IsChecked="True"
+                             Height="50"
+                             Foreground="AliceBlue"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}" Checked="RadioButton_Checked"/>
+
+                <RadioButton Content="Cryptocurrency info"
+                             Height="50"
+                             Foreground="AliceBlue"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"/>
+
+                <RadioButton Content="Search cryptocurrency"
+                             Height="50"
+                             Foreground="AliceBlue"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"/>
+
+                <RadioButton Content="Exit"
+                             Height="50"
+                             Foreground="AliceBlue"
+                             FontSize="14"
+                             VerticalAlignment="Bottom"
+                             Command="{Binding CloseApplicationCommand}"
+                             Style="{StaticResource MenuButtonTheme}"/>
+            </StackPanel>
+
+            <TextBox Width="250"
+                     Height="40"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Left"
+                     Margin="5"
+                     Grid.Column="1"
+                     Style="{StaticResource TextBoxTheme}"></TextBox>
+
+            <ContentControl Grid.Column="1"
+                            Grid.Row="1"
+                            Margin="10"
+                            Content="{Binding CurrentView}"/>
+        </Grid>
+    </Border>
 </Window>

@@ -1,0 +1,15 @@
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\TestConsoleApp\bin\Debug\net6.0\CryptoInfoConsole.exe
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\TestConsoleApp\bin\Debug\net6.0\CryptoInfoConsole.deps.json
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\TestConsoleApp\bin\Debug\net6.0\CryptoInfoConsole.runtimeconfig.json
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\TestConsoleApp\bin\Debug\net6.0\CryptoInfoConsole.dll
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\TestConsoleApp\bin\Debug\net6.0\CryptoInfoConsole.pdb
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\TestConsoleApp\obj\Debug\net6.0\CryptoInfoConsole.csproj.AssemblyReference.cache
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\TestConsoleApp\obj\Debug\net6.0\CryptoInfoConsole.GeneratedMSBuildEditorConfig.editorconfig
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\TestConsoleApp\obj\Debug\net6.0\CryptoInfoConsole.AssemblyInfoInputs.cache
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\TestConsoleApp\obj\Debug\net6.0\CryptoInfoConsole.AssemblyInfo.cs
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\TestConsoleApp\obj\Debug\net6.0\CryptoInfoConsole.csproj.CoreCompileInputs.cache
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\TestConsoleApp\obj\Debug\net6.0\CryptoInfoConsole.dll
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\TestConsoleApp\obj\Debug\net6.0\refint\CryptoInfoConsole.dll
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\TestConsoleApp\obj\Debug\net6.0\CryptoInfoConsole.pdb
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\TestConsoleApp\obj\Debug\net6.0\CryptoInfoConsole.genruntimeconfig.cache
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\TestConsoleApp\obj\Debug\net6.0\ref\CryptoInfoConsole.dll
