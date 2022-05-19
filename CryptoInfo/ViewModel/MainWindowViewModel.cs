@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Net.Http;
 using System.Security.Cryptography.X509Certificates;
@@ -21,9 +22,32 @@ namespace CryptoInfo.ViewModel
         private const string coincap_assets_url = @"http://api.coincap.io/v2/assets";
         public List<Cryptocurrency> Cryptocurrencies { get; set; }
 
-        public HomeViewModel HomeVM { get; set; }
+        #region Title
 
-        public InfoWindowView InfoVM { get; set; }
+        private object _title = "CryptoInfo";
+
+        public object Title
+        {
+            get { return _title; }
+            set
+            {
+                _title = value;
+                OnPropertyChanged();
+            }
+        }
+        #endregion
+
+        public HomeViewModel HomeVM
+        {
+            get; 
+            set;
+        }
+
+        public InfoWindowView InfoVM
+        {
+            get; 
+            set;
+        }
 
         #region Current View
 
@@ -40,34 +64,6 @@ namespace CryptoInfo.ViewModel
         }
         #endregion
 
-        #region Window header
-
-        /// <summary>Title of window</summary>
-        private string _Title = "CryptInfo"; 
-
-        /// <summary>Title of window</summary>
-        public string Title
-        {
-            get => _Title;
-            set => Set(ref _Title, value);
-        }
-
-        #endregion
-
-        #region Programm status
-
-        /// <summary>Program status</summary>
-        private string _Status = "Well done";
-
-        /// <summary>Program status</summary>
-        public string Status
-        {
-            get => _Status; 
-            set => Set(ref _Status, value);
-        }
-
-        #endregion
-
         #region Commands
 
         #region CloseApplicationCommand
@@ -78,6 +74,23 @@ namespace CryptoInfo.ViewModel
         private void OnCloseApplicationCommandExecuted(object p)
         {
             Application.Current.Shutdown();
+        }
+
+        
+
+
+
+        private bool CanHomeViewCommand(object p) => true;
+        private void OnHomeViewCommand(object p)
+        {
+            CurrentView = HomeVM;
+        }
+
+        private bool CanInfoViewCommand(object p) => true;
+        private void OnInfoViewCommand(object p)
+        {
+            InfoVM = new InfoWindowView();
+            CurrentView = InfoVM;
         }
         #endregion
 
@@ -97,15 +110,15 @@ namespace CryptoInfo.ViewModel
             CloseApplicationCommand =
                 new LambdaCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
 
-            HomeViewCommand = new LambdaCommand(o =>
-            {
-                CurrentView = HomeVM;
-            });
 
-            InfoViewCommand = new LambdaCommand(o =>
-            {
-                CurrentView = InfoVM;
-            });
+            HomeViewCommand =
+                new LambdaCommand(OnHomeViewCommand, CanHomeViewCommand);
+
+            InfoViewCommand = 
+                new LambdaCommand(OnInfoViewCommand, CanInfoViewCommand);
+
+            
+
 
             #endregion
 
@@ -119,8 +132,11 @@ namespace CryptoInfo.ViewModel
             #region Home View
 
             HomeVM = new HomeViewModel();
-            InfoVM = new InfoWindowView("bitcoin");
+                                                                                                
+            InfoVM = new InfoWindowView();
             CurrentView = HomeVM;
+
+
 
             #endregion
         }
@@ -144,13 +160,13 @@ namespace CryptoInfo.ViewModel
                     }
                     else
                     {
-                        throw new FieldAccessException("Something wrong with url");
+                        throw new FieldAccessException(responseMessage.ReasonPhrase);
                     }
                 }
             }
             catch (Exception e)
             {
-                _Status = e.Message;
+                MessageBox.Show(e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Asterisk);
             }
             throw new NotImplementedException();
         }

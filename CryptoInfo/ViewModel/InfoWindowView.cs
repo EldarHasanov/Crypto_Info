@@ -5,7 +5,9 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using CryptoInfo.DAL;
+using CryptoInfo.Infrastructure.Commands;
 using CryptoInfo.Models;
 using CryptoInfo.ViewModel.Base;
 
@@ -15,7 +17,17 @@ namespace CryptoInfo.ViewModel
     {
         private const string coincap_assets_url = @"http://api.coincap.io/v2/assets";
 
-        public Cryptocurrency Cryptocurrencie { get; set; }
+        private Cryptocurrency _cryptocurrencie;
+
+        public Cryptocurrency Cryptocurrencie 
+        {
+            get { return _cryptocurrencie; }
+            set
+            {
+                _cryptocurrencie = value;
+                OnPropertyChanged();
+            }
+        }
 
         #region Crypt Id
         private string _cryptId;
@@ -29,17 +41,30 @@ namespace CryptoInfo.ViewModel
                 OnPropertyChanged();
             }
         }
+
+        public ICommand SearchCryptocurencyCommand { get; }
+        private bool CanSearchCryptocurencyCommand(object p) => true;
+        private void OnSearchCryptocurencyCommand(object p)
+        {
+            CryptId = Search;
+            Cryptocurrencie = GetCryptocurrenciesList()[0];
+            Cryptocurrencie.priceUsd = Cryptocurrencie.priceUsd.Substring(0, 8) + " USD";
+        }
+
         #endregion
 
-        public InfoWindowView(string cryptId)
+        private string _search;
+
+        public string Search
         {
-            CryptId = cryptId;
-            Cryptocurrencie = GetCryptocurrenciesList()[0];
+            get => _search;
+            set => Set(ref _search, value);
         }
 
         public InfoWindowView()
         {
-            CryptId = "bitcoin";
+            SearchCryptocurencyCommand =
+                new LambdaCommand(OnSearchCryptocurencyCommand, CanSearchCryptocurencyCommand);
             Cryptocurrencie = GetCryptocurrenciesList()[0];
             Cryptocurrencie.priceUsd = Cryptocurrencie.priceUsd.Substring(0, 8) + " USD";
         }
@@ -51,7 +76,12 @@ namespace CryptoInfo.ViewModel
             var client = new HttpClient();
             if (client != null)
             {
-                var responseMessage = client.GetAsync(coincap_assets_url + "/" + CryptId).Result;
+                var responseMessage = client.GetAsync(coincap_assets_url + "/bitcoin").Result;
+                if (CryptId != null)
+                {
+                    responseMessage = client.GetAsync(coincap_assets_url + "/" + CryptId).Result;
+                }
+
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     var jsonStringResult = responseMessage.Content.ReadAsStringAsync().Result;
@@ -65,7 +95,16 @@ namespace CryptoInfo.ViewModel
                 }
                 else
                 {
-                    throw new FieldAccessException("Something wrong with url");
+                    Cryptocurrency errCryptocurrencie = new Cryptocurrency();
+                    errCryptocurrencie.symbol = "Wrong ID";
+                    errCryptocurrencie.name = "use correct ID";
+                    errCryptocurrencie.rank = "0";
+                    errCryptocurrencie.priceUsd = "000000000";
+
+                    var listOfCryptocurrencies = new List<Cryptocurrency>();
+                    listOfCryptocurrencies.Add(errCryptocurrencie);
+
+                    return listOfCryptocurrencies;
                 }
             }
             throw new NotImplementedException();

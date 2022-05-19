@@ -129,7 +129,7 @@
                 </Style>
             </StackPanel.Resources>
             <Border Style="{StaticResource Tile}"
-                    Height="315">
+                    Height="250">
                 <StackPanel>
                     <DataGrid ItemsSource="{Binding Cryptocurrencie}"
                               IsReadOnly="True"
@@ -149,7 +149,42 @@
                 </StackPanel>
             </Border>
         </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Border CornerRadius="10"
+                    Background="#353340"
+                    HorizontalAlignment="Left"
+                    Margin="0,20,0,0"
+                    Width="570"
+                    Height="40">
+                <TextBox Width="570"
+                         Height="40"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Left"
+                         Margin="5"
+                         Text="{Binding Search,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                         BorderThickness="0"
+                         Background="Transparent"
+                         VerticalContentAlignment="Center"
+                         Padding="5"
+                         Foreground="#cfcfcf"/>
+            </Border>
 
-
+            <Border Height="40"
+                    Width="120"
+                    Background="#22202f"
+                    HorizontalAlignment="Left"
+                    Margin="10,20,0,0"
+                    CornerRadius="10">
+                <TextBlock TextAlignment="Center"
+                           Text="Search"
+                           VerticalAlignment="Center"
+                           Foreground="AliceBlue"
+                           FontSize="20"/>
+                <Border.InputBindings>
+                    <MouseBinding Command="{Binding SearchCryptocurencyCommand}"
+                                  MouseAction="LeftClick"/>
+                </Border.InputBindings>
+            </Border>
+        </StackPanel>
     </StackPanel>
 </UserControl>

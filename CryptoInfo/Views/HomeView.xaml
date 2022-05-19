@@ -18,15 +18,6 @@
                 <Setter Property="Background" Value="#22202f"/>
                 <Setter Property="CornerRadius" Value="10"/>
                 <Setter Property="Margin" Value="0,0,20,0"/>
-                <Style.Triggers>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Effect">
-                            <Setter.Value>
-                                <BlurEffect Radius="5"/>
-                            </Setter.Value>
-                        </Setter>
-                    </Trigger>
-                </Style.Triggers>
             </Style>
             <Style x:Key="TitleText" TargetType="TextBlock">
                 <Setter Property="FontSize" Value="25"/>
@@ -55,6 +46,12 @@
                         <GradientStop Color="#399ffd" Offset="1"/>
                     </LinearGradientBrush>
                 </Border.Background>
+
+                <Border.InputBindings>
+                    <MouseBinding Command="{Binding SelectCryptocurencyCommand}"
+                                  CommandParameter="{Binding TopTenCryptocurrencies[0].id}"
+                                  MouseAction="LeftClick"/>
+                </Border.InputBindings>
 
                 <Border.Clip>
                     <RectangleGeometry RadiusX="10"
@@ -90,6 +87,12 @@
                         <GradientStop Color="#fcb538" Offset="1"/>
                     </LinearGradientBrush>
                 </Border.Background>
+
+                <Border.InputBindings>
+                    <MouseBinding Command="{Binding SelectCryptocurencyCommand}"
+                                  CommandParameter="{Binding TopTenCryptocurrencies[1].id}"
+                                  MouseAction="LeftClick"/>
+                </Border.InputBindings>
 
                 <Border.Clip>
                     <RectangleGeometry RadiusX="10"
@@ -133,6 +136,11 @@
                 </Style>
             </StackPanel.Resources>
             <Border Style="{StaticResource LittleTile}">
+                <Border.InputBindings>
+                    <MouseBinding Command="{Binding SelectCryptocurencyCommand}"
+                                  CommandParameter="{Binding TopTenCryptocurrencies[2].id}"
+                                  MouseAction="LeftClick"/>
+                </Border.InputBindings>
                 <StackPanel>
                     <TextBlock Style="{StaticResource TitleText}"
                                Text="{Binding TopTenCryptocurrencies[2].name}"/>
@@ -145,6 +153,11 @@
                 </StackPanel>
             </Border>
             <Border Style="{StaticResource LittleTile}">
+                <Border.InputBindings>
+                    <MouseBinding Command="{Binding SelectCryptocurencyCommand}"
+                                  CommandParameter="{Binding TopTenCryptocurrencies[3].id}"
+                                  MouseAction="LeftClick"/>
+                </Border.InputBindings>
                 <StackPanel>
                     <TextBlock Style="{StaticResource TitleText}"
                                Text="{Binding TopTenCryptocurrencies[3].name}"/>
@@ -157,6 +170,11 @@
                 </StackPanel>
             </Border>
             <Border Style="{StaticResource LittleTile}">
+                <Border.InputBindings>
+                    <MouseBinding Command="{Binding SelectCryptocurencyCommand}"
+                                  CommandParameter="{Binding TopTenCryptocurrencies[4].id}"
+                                  MouseAction="LeftClick"/>
+                </Border.InputBindings>
                 <StackPanel>
                     <TextBlock Style="{StaticResource TitleText}"
                                Text="{Binding TopTenCryptocurrencies[4].name}"/>
@@ -169,6 +187,11 @@
                 </StackPanel>
             </Border>
             <Border Style="{StaticResource LittleTile}">
+                <Border.InputBindings>
+                    <MouseBinding Command="{Binding SelectCryptocurencyCommand}"
+                                  CommandParameter="{Binding TopTenCryptocurrencies[5].id}"
+                                  MouseAction="LeftClick"/>
+                </Border.InputBindings>
                 <StackPanel>
                     <TextBlock Style="{StaticResource TitleText}"
                                Text="{Binding TopTenCryptocurrencies[5].name}"/>
@@ -195,6 +218,11 @@
                 </Style>
             </StackPanel.Resources>
             <Border Style="{StaticResource LittleTile}">
+                <Border.InputBindings>
+                    <MouseBinding Command="{Binding SelectCryptocurencyCommand}"
+                                  CommandParameter="{Binding TopTenCryptocurrencies[6].id}"
+                                  MouseAction="LeftClick"/>
+                </Border.InputBindings>
                 <StackPanel>
                     <TextBlock Style="{StaticResource TitleText}"
                                Text="{Binding TopTenCryptocurrencies[6].name}"/>
@@ -207,6 +235,11 @@
                 </StackPanel>
             </Border>
             <Border Style="{StaticResource LittleTile}">
+                <Border.InputBindings>
+                    <MouseBinding Command="{Binding SelectCryptocurencyCommand}"
+                                  CommandParameter="{Binding TopTenCryptocurrencies[7].id}"
+                                  MouseAction="LeftClick"/>
+                </Border.InputBindings>
                 <StackPanel>
                     <TextBlock Style="{StaticResource TitleText}"
                                Text="{Binding TopTenCryptocurrencies[7].name}"/>
@@ -219,6 +252,11 @@
                 </StackPanel>
             </Border>
             <Border Style="{StaticResource LittleTile}">
+                <Border.InputBindings>
+                    <MouseBinding Command="{Binding SelectCryptocurencyCommand}"
+                                  CommandParameter="{Binding TopTenCryptocurrencies[8].id}"
+                                  MouseAction="LeftClick"/>
+                </Border.InputBindings>
                 <StackPanel>
                     <TextBlock Style="{StaticResource TitleText}"
                                Text="{Binding TopTenCryptocurrencies[8].name}"/>
@@ -231,6 +269,11 @@
                 </StackPanel>
             </Border>
             <Border Style="{StaticResource LittleTile}">
+                <Border.InputBindings>
+                    <MouseBinding Command="{Binding SelectCryptocurencyCommand}"
+                                  CommandParameter="{Binding TopTenCryptocurrencies[9].id}"
+                                  MouseAction="LeftClick"/>
+                </Border.InputBindings>
                 <StackPanel>
                     <TextBlock Style="{StaticResource TitleText}"
                                Text="{Binding TopTenCryptocurrencies[9].name}"/>

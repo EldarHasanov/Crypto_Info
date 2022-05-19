@@ -6,6 +6,8 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using CryptoInfo.DAL;
+using CryptoInfo.Infrastructure.Commands;
+using CryptoInfo.Infrastructure.Commands.Base;
 using CryptoInfo.Models;
 using CryptoInfo.ViewModel.Base;
 
@@ -15,6 +17,8 @@ namespace CryptoInfo.ViewModel
     {
         private const string coincap_assets_url = @"http://api.coincap.io/v2/assets";
         public List<Cryptocurrency> TopTenCryptocurrencies { get; set; }
+
+        public RelayCommand SelectCryptocurencyCommand { get; set; }
 
         public HomeViewModel()
         {
@@ -48,6 +52,8 @@ namespace CryptoInfo.ViewModel
                 }
             }
             throw new NotImplementedException();
+
+
         }
     }
 }
