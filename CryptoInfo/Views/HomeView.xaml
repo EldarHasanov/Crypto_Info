@@ -11,6 +11,29 @@
         <StackPanel.DataContext>
             <VM:HomeViewModel/>
         </StackPanel.DataContext>
+        <StackPanel.Resources>
+            <Style x:Key="LittleTile" TargetType="Border">
+                <Setter Property="Width" Value="160"/>
+                <Setter Property="Height" Value="130"/>
+                <Setter Property="Background" Value="#22202f"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="Margin" Value="0,0,20,0"/>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Effect">
+                            <Setter.Value>
+                                <BlurEffect Radius="5"/>
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="TitleText" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="Foreground" Value="AliceBlue"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+            </Style>
+        </StackPanel.Resources>
         <TextBlock Text="Top 10 cryptocurrency"
                    Foreground="AliceBlue"
                    FontSize="30"
@@ -20,11 +43,12 @@
         <StackPanel Orientation="Horizontal">
             <StackPanel.Resources>
                 <Style TargetType="{x:Type Border}">
-                    <Setter Property="Margin" Value="0,0,20,0"></Setter>
+                    <Setter Property="Margin" Value="0,0,20,0"/>
                 </Style>
+                
             </StackPanel.Resources>
             <Border Width="340"
-                    Height="130">
+                    Style="{StaticResource LittleTile}">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
                         <GradientStop Color="#5bc3ff" Offset="0.0"/>
@@ -45,24 +69,21 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel>
                         <TextBlock FontSize="90"
-                                 Background="Transparent"
-                                 Foreground="AliceBlue"
-                                 Text="{Binding TopTenCryptocurrencies[0].symbol}"/>
+                                   Style="{StaticResource TitleText}"
+                                   Text="{Binding TopTenCryptocurrencies[0].symbol}"/>
                     </StackPanel>
                     <StackPanel Grid.Column="1">
-                        <TextBlock FontSize="45"
-                                   Background="Transparent"
-                                   Foreground="AliceBlue"
+                        <TextBlock FontSize="38"
+                                   Style="{StaticResource TitleText}"
                                    Text="{Binding TopTenCryptocurrencies[0].name}"/>
-                        <TextBlock FontSize="45"
-                                   Background="Transparent"
-                                   Foreground="AliceBlue"
+                        <TextBlock Margin="0,20,0,0"
+                                   Style="{StaticResource TitleText}"
                                    Text="{Binding TopTenCryptocurrencies[0].priceUsd}"/>
                     </StackPanel>
                 </Grid>
             </Border>
             <Border Width="340"
-                    Height="130">
+                    Style="{StaticResource LittleTile}">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
                         <GradientStop Color="#ffc554" Offset="0.0"/>
@@ -75,6 +96,26 @@
                                        RadiusY="10"
                                        Rect="0,0,340,130"/>
                 </Border.Clip>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="170"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <TextBlock FontSize="90"
+                                   Style="{StaticResource TitleText}"
+                                   Text="{Binding TopTenCryptocurrencies[1].symbol}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <TextBlock FontSize="38"
+                                   Style="{StaticResource TitleText}"
+                                   Text="{Binding TopTenCryptocurrencies[1].name}"/>
+                        <TextBlock Margin="0,20,0,0"
+                                   Style="{StaticResource TitleText}"
+                                   Text="{Binding TopTenCryptocurrencies[1].priceUsd}"/>
+                    </StackPanel>
+                </Grid>
             </Border>
         </StackPanel>
         <StackPanel Orientation="Horizontal"
@@ -83,26 +124,61 @@
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="Margin" Value="0,0,20,0"></Setter>
                 </Style>
+                <Style x:Key="TitleText" TargetType="TextBlock">
+                    <Setter Property="Margin" Value="5"/>
+                    <Setter Property="FontSize" Value="25"/>
+                    <Setter Property="Foreground" Value="AliceBlue"/>
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                    <Setter Property="VerticalAlignment" Value="Stretch"/>
+                </Style>
             </StackPanel.Resources>
-            <Border Width="160"
-                    Height="130"
-                    Background="#22202f"
-                    CornerRadius="10">
+            <Border Style="{StaticResource LittleTile}">
+                <StackPanel>
+                    <TextBlock Style="{StaticResource TitleText}"
+                               Text="{Binding TopTenCryptocurrencies[2].name}"/>
+                    <TextBlock Style="{StaticResource TitleText}"
+                               FontSize="30"
+                               Text="{Binding TopTenCryptocurrencies[2].symbol}"/>
+                    <TextBlock Style="{StaticResource TitleText}"
+                               FontSize="20"
+                               Text="{Binding TopTenCryptocurrencies[2].priceUsd}"/>
+                </StackPanel>
             </Border>
-            <Border Width="160"
-                    Height="130"
-                    Background="#22202f"
-                    CornerRadius="10">
+            <Border Style="{StaticResource LittleTile}">
+                <StackPanel>
+                    <TextBlock Style="{StaticResource TitleText}"
+                               Text="{Binding TopTenCryptocurrencies[3].name}"/>
+                    <TextBlock Style="{StaticResource TitleText}"
+                               FontSize="30"
+                               Text="{Binding TopTenCryptocurrencies[3].symbol}"/>
+                    <TextBlock Style="{StaticResource TitleText}"
+                               FontSize="20"
+                               Text="{Binding TopTenCryptocurrencies[3].priceUsd}"/>
+                </StackPanel>
             </Border>
-            <Border Width="160"
-                    Height="130"
-                    Background="#22202f"
-                    CornerRadius="10">
+            <Border Style="{StaticResource LittleTile}">
+                <StackPanel>
+                    <TextBlock Style="{StaticResource TitleText}"
+                               Text="{Binding TopTenCryptocurrencies[4].name}"/>
+                    <TextBlock Style="{StaticResource TitleText}"
+                               FontSize="30"
+                               Text="{Binding TopTenCryptocurrencies[4].symbol}"/>
+                    <TextBlock Style="{StaticResource TitleText}"
+                               FontSize="20"
+                               Text="{Binding TopTenCryptocurrencies[4].priceUsd}"/>
+                </StackPanel>
             </Border>
-            <Border Width="160"
-                    Height="130"
-                    Background="#22202f"
-                    CornerRadius="10">
+            <Border Style="{StaticResource LittleTile}">
+                <StackPanel>
+                    <TextBlock Style="{StaticResource TitleText}"
+                               Text="{Binding TopTenCryptocurrencies[5].name}"/>
+                    <TextBlock Style="{StaticResource TitleText}"
+                               FontSize="30"
+                               Text="{Binding TopTenCryptocurrencies[5].symbol}"/>
+                    <TextBlock Style="{StaticResource TitleText}"
+                               FontSize="20"
+                               Text="{Binding TopTenCryptocurrencies[5].priceUsd}"/>
+                </StackPanel>
             </Border>
         </StackPanel>
         <StackPanel Orientation="Horizontal"
@@ -111,26 +187,60 @@
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="Margin" Value="0,0,20,0"></Setter>
                 </Style>
+                <Style x:Key="TitleText" TargetType="TextBlock">
+                    <Setter Property="Margin" Value="5"/>
+                    <Setter Property="FontSize" Value="25"/>
+                    <Setter Property="Foreground" Value="AliceBlue"/>
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                </Style>
             </StackPanel.Resources>
-            <Border Width="160"
-                    Height="130"
-                    Background="#22202f"
-                    CornerRadius="10">
+            <Border Style="{StaticResource LittleTile}">
+                <StackPanel>
+                    <TextBlock Style="{StaticResource TitleText}"
+                               Text="{Binding TopTenCryptocurrencies[6].name}"/>
+                    <TextBlock Style="{StaticResource TitleText}"
+                               FontSize="30"
+                               Text="{Binding TopTenCryptocurrencies[6].symbol}"/>
+                    <TextBlock Style="{StaticResource TitleText}"
+                               FontSize="20"
+                               Text="{Binding TopTenCryptocurrencies[6].priceUsd}"/>
+                </StackPanel>
             </Border>
-            <Border Width="160"
-                    Height="130"
-                    Background="#22202f"
-                    CornerRadius="10">
+            <Border Style="{StaticResource LittleTile}">
+                <StackPanel>
+                    <TextBlock Style="{StaticResource TitleText}"
+                               Text="{Binding TopTenCryptocurrencies[7].name}"/>
+                    <TextBlock Style="{StaticResource TitleText}"
+                               FontSize="30"
+                               Text="{Binding TopTenCryptocurrencies[7].symbol}"/>
+                    <TextBlock Style="{StaticResource TitleText}"
+                               FontSize="20"
+                               Text="{Binding TopTenCryptocurrencies[7].priceUsd}"/>
+                </StackPanel>
             </Border>
-            <Border Width="160"
-                    Height="130"
-                    Background="#22202f"
-                    CornerRadius="10">
+            <Border Style="{StaticResource LittleTile}">
+                <StackPanel>
+                    <TextBlock Style="{StaticResource TitleText}"
+                               Text="{Binding TopTenCryptocurrencies[8].name}"/>
+                    <TextBlock Style="{StaticResource TitleText}"
+                               FontSize="30"
+                               Text="{Binding TopTenCryptocurrencies[8].symbol}"/>
+                    <TextBlock Style="{StaticResource TitleText}"
+                               FontSize="20"
+                               Text="{Binding TopTenCryptocurrencies[8].priceUsd}"/>
+                </StackPanel>
             </Border>
-            <Border Width="160"
-                    Height="130"
-                    Background="#22202f"
-                    CornerRadius="10">
+            <Border Style="{StaticResource LittleTile}">
+                <StackPanel>
+                    <TextBlock Style="{StaticResource TitleText}"
+                               Text="{Binding TopTenCryptocurrencies[9].name}"/>
+                    <TextBlock Style="{StaticResource TitleText}"
+                               FontSize="30"
+                               Text="{Binding TopTenCryptocurrencies[9].symbol}"/>
+                    <TextBlock Style="{StaticResource TitleText}"
+                               FontSize="20"
+                               Text="{Binding TopTenCryptocurrencies[9].priceUsd}"/>
+                </StackPanel>
             </Border>
         </StackPanel>
 

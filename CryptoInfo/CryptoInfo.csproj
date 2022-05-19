@@ -113,7 +113,6 @@
     <Compile Include="Models\AssetsRootObjectById.cs" />
     <Compile Include="Models\AssetsRootObjectWithList.cs" />
     <Compile Include="Models\Cryptocurrency.cs" />
-    <Compile Include="Models\IListCrypt.cs" />
     <Compile Include="ViewModel\Base\ViewModelBase.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
