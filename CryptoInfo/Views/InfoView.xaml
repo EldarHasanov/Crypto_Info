@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:CryptoInfo.ViewModel.Base"
              xmlns:viewModel="clr-namespace:CryptoInfo.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="505" d:DesignWidth="700">
+             d:DesignHeight="580" d:DesignWidth="700">
     <StackPanel>
         <StackPanel.DataContext>
             <viewModel:InfoWindowView/>
@@ -17,15 +17,62 @@
                 <Setter Property="Height" Value="75"/>
                 <Setter Property="Background" Value="#22202f"/>
                 <Setter Property="CornerRadius" Value="10"/>
-                <Setter Property="Margin" Value="0,0,0,0"/>
+                <Setter Property="Margin" Value="0,20,0,0"/>
             </Style>
             <Style x:Key="TitleText" TargetType="TextBlock">
                 <Setter Property="FontSize" Value="25"/>
                 <Setter Property="Foreground" Value="AliceBlue"/>
                 <Setter Property="HorizontalAlignment" Value="Center"/>
             </Style>
+            <Style TargetType="Border"
+                   x:Key="button">
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#2b293b"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
         </StackPanel.Resources>
+        <StackPanel Orientation="Horizontal">
+            <Border CornerRadius="10"
+                    Background="#353340"
+                    HorizontalAlignment="Left"
+                    Margin="0,5,0,0"
+                    Width="570"
+                    Height="40">
+                <TextBox Width="570"
+                         Height="40"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Left"
+                         Margin="5"
+                         Text="{Binding Search,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                         BorderThickness="0"
+                         Background="Transparent"
+                         VerticalContentAlignment="Center"
+                         Padding="5"
+                         Foreground="#cfcfcf"/>
+            </Border>
 
+
+            <Border Height="40"
+                    Width="120"
+                    Background="#22202f"
+                    HorizontalAlignment="Left"
+                    Margin="10,5,0,0"
+                    CornerRadius="10"
+                    Style="{StaticResource button}">
+
+                <TextBlock TextAlignment="Center"
+                           Text="Search"
+                           VerticalAlignment="Center"
+                           Foreground="AliceBlue"
+                           FontSize="20"/>
+                <Border.InputBindings>
+                    <MouseBinding Command="{Binding SearchCryptocurencyCommand}"
+                                  MouseAction="LeftClick"/>
+                </Border.InputBindings>
+            </Border>
+        </StackPanel>
         <StackPanel>
             <StackPanel.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -115,7 +162,7 @@
             </Border>
         </StackPanel>
         <StackPanel Orientation="Horizontal"
-                    Margin="0,20,0,0">
+                    Margin="0,0,0,0">
             <StackPanel.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="Margin" Value="0,0,20,0"></Setter>
@@ -129,61 +176,10 @@
                 </Style>
             </StackPanel.Resources>
             <Border Style="{StaticResource Tile}"
-                    Height="250">
+                    Height="325">
                 <StackPanel>
-                    <DataGrid ItemsSource="{Binding Cryptocurrencie}"
-                              IsReadOnly="True"
-                              AlternatingRowBackground="DarkGray"
-                              Background="Transparent"
-                              GridLinesVisibility="None">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Rank" Binding="{Binding rank}" Width="*"/>
-                            <DataGridTextColumn Header="ID" Binding="{Binding id}" Width="*"/>
-                            <DataGridTextColumn Header="Symbol" Binding="{Binding symbol}" Width="*"/>
-                            <DataGridTextColumn Header="Name" Binding="{Binding name}" Width="*"/>
-                            <DataGridTextColumn Header="Price" Binding="{Binding priceUsd}" Width="*"/>
-                            <DataGridTextColumn Header="Change per 24 hours" Binding="{Binding changePercent24Hr}" Width="*"/>
-
-                        </DataGrid.Columns>
-                    </DataGrid>
+                    
                 </StackPanel>
-            </Border>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <Border CornerRadius="10"
-                    Background="#353340"
-                    HorizontalAlignment="Left"
-                    Margin="0,20,0,0"
-                    Width="570"
-                    Height="40">
-                <TextBox Width="570"
-                         Height="40"
-                         VerticalAlignment="Center"
-                         HorizontalAlignment="Left"
-                         Margin="5"
-                         Text="{Binding Search,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                         BorderThickness="0"
-                         Background="Transparent"
-                         VerticalContentAlignment="Center"
-                         Padding="5"
-                         Foreground="#cfcfcf"/>
-            </Border>
-
-            <Border Height="40"
-                    Width="120"
-                    Background="#22202f"
-                    HorizontalAlignment="Left"
-                    Margin="10,20,0,0"
-                    CornerRadius="10">
-                <TextBlock TextAlignment="Center"
-                           Text="Search"
-                           VerticalAlignment="Center"
-                           Foreground="AliceBlue"
-                           FontSize="20"/>
-                <Border.InputBindings>
-                    <MouseBinding Command="{Binding SearchCryptocurencyCommand}"
-                                  MouseAction="LeftClick"/>
-                </Border.InputBindings>
             </Border>
         </StackPanel>
     </StackPanel>

@@ -25,6 +25,7 @@ namespace CryptoInfo.ViewModel
             set
             {
                 _cryptocurrencie = value;
+                _cryptocurrencie.priceUsd = value.priceUsd.Substring(0, 8) + " USD";
                 OnPropertyChanged();
             }
         }
@@ -48,7 +49,6 @@ namespace CryptoInfo.ViewModel
         {
             CryptId = Search;
             Cryptocurrencie = GetCryptocurrenciesList()[0];
-            Cryptocurrencie.priceUsd = Cryptocurrencie.priceUsd.Substring(0, 8) + " USD";
         }
 
         #endregion
@@ -66,7 +66,6 @@ namespace CryptoInfo.ViewModel
             SearchCryptocurencyCommand =
                 new LambdaCommand(OnSearchCryptocurencyCommand, CanSearchCryptocurencyCommand);
             Cryptocurrencie = GetCryptocurrenciesList()[0];
-            Cryptocurrencie.priceUsd = Cryptocurrencie.priceUsd.Substring(0, 8) + " USD";
         }
 
         #region Interface realisation
