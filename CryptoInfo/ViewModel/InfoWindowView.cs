@@ -47,8 +47,19 @@ namespace CryptoInfo.ViewModel
         private bool CanSearchCryptocurencyCommand(object p) => true;
         private void OnSearchCryptocurencyCommand(object p)
         {
-            CryptId = Search;
-            Cryptocurrencie = GetCryptocurrenciesList()[0];
+            var Crypts = GetCryptocurrenciesList(true);
+
+            Cryptocurrency result = Crypts.Find(element => element.name == Search);
+
+            if (result == null)
+            {
+                CryptId = "FalseName";
+                Cryptocurrencie = GetCryptocurrenciesList()[0];
+            }
+            else
+            {
+                Cryptocurrencie = result;
+            }
         }
 
         #endregion
@@ -104,6 +115,30 @@ namespace CryptoInfo.ViewModel
                     listOfCryptocurrencies.Add(errCryptocurrencie);
 
                     return listOfCryptocurrencies;
+                }
+            }
+            throw new NotImplementedException();
+        }
+
+        public List<Cryptocurrency> GetCryptocurrenciesList(bool fullList)
+        {
+            if (!fullList)
+            {
+                return GetCryptocurrenciesList();
+            }
+
+            var client = new HttpClient();
+            if (client != null)
+            {
+                var responseMessage = client.GetAsync(coincap_assets_url).Result;
+
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var jsonStringResult = responseMessage.Content.ReadAsStringAsync().Result;
+
+                    AssetsRootObjectWithList rootobject = JsonSerializer.Deserialize<AssetsRootObjectWithList>(jsonStringResult);
+
+                    return rootobject.data.ToList();
                 }
             }
             throw new NotImplementedException();
