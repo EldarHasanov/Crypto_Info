@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -42,7 +43,9 @@ namespace CryptoInfo.ViewModel
                 OnPropertyChanged();
             }
         }
+        #endregion
 
+        #region Commands
         public ICommand SearchCryptocurencyCommand { get; }
         private bool CanSearchCryptocurencyCommand(object p) => true;
         private void OnSearchCryptocurencyCommand(object p)
@@ -62,6 +65,17 @@ namespace CryptoInfo.ViewModel
             }
         }
 
+        public ICommand GoToCommand { get; }
+        private bool CanGoToCommand(object p) => true;
+        private void OnGoToCommand(object p)
+        {
+            System.Diagnostics.Process.Start(new ProcessStartInfo
+            {
+                FileName = Cryptocurrencie.explorer,
+                UseShellExecute = true
+            });
+        }
+
         #endregion
 
         private string _search;
@@ -76,6 +90,10 @@ namespace CryptoInfo.ViewModel
         {
             SearchCryptocurencyCommand =
                 new LambdaCommand(OnSearchCryptocurencyCommand, CanSearchCryptocurencyCommand);
+
+            GoToCommand =
+                new LambdaCommand(OnGoToCommand, CanGoToCommand);
+
             Cryptocurrencie = GetCryptocurrenciesList()[0];
         }
 
@@ -145,5 +163,7 @@ namespace CryptoInfo.ViewModel
         }
 
         #endregion
+
+
     }
 }

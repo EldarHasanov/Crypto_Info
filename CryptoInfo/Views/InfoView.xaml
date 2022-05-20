@@ -20,7 +20,7 @@
                 <Setter Property="Margin" Value="0,20,0,0"/>
             </Style>
             <Style x:Key="TitleText" TargetType="TextBlock">
-                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="FontSize" Value="20"/>
                 <Setter Property="Foreground" Value="AliceBlue"/>
                 <Setter Property="HorizontalAlignment" Value="Center"/>
             </Style>
@@ -28,7 +28,8 @@
                    x:Key="button">
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="#2b293b"></Setter>
+                        <Setter Property="BorderThickness" Value="2"/>
+                        <Setter Property="BorderBrush" Value="AliceBlue"></Setter>
                     </Trigger>
                 </Style.Triggers>
             </Style>
@@ -177,9 +178,69 @@
             </StackPanel.Resources>
             <Border Style="{StaticResource Tile}"
                     Height="325">
-                <StackPanel>
-                    
-                </StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Volume for 24H USD"
+                               Style="{StaticResource TitleText}"
+                               HorizontalAlignment="Left"/>
+                    <TextBlock Grid.Row="1" 
+                               Text="Price change 24H %"
+                               Style="{StaticResource TitleText}"
+                               HorizontalAlignment="Left"/>
+                    <TextBlock Grid.Row="2" 
+                               Text="Volume Average Price 24H"
+                               Style="{StaticResource TitleText}"
+                               HorizontalAlignment="Left"/>
+                    <TextBlock Grid.Row="3" 
+                               Text="Explorer"
+                               Style="{StaticResource TitleText}"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock Grid.Column="1" 
+                               Text="{Binding Cryptocurrencie.volumeUsd24Hr}"
+                               Style="{StaticResource TitleText}"
+                               HorizontalAlignment="Right"/>
+                    <TextBlock Grid.Column="1" 
+                               Grid.Row="1" 
+                               Text="{Binding Cryptocurrencie.changePercent24Hr}"
+                               Style="{StaticResource TitleText}"
+                               HorizontalAlignment="Right"/>
+                    <TextBlock Grid.Column="1" 
+                               Grid.Row="2" 
+                               Text="{Binding Cryptocurrencie.vwap24Hr}"
+                               Style="{StaticResource TitleText}"
+                               HorizontalAlignment="Right"/>
+                    <Border Height="40"
+                            Grid.Column="1" 
+                            Grid.Row="3"
+                            Width="120"
+                            Background="#2b293b"
+                            HorizontalAlignment="Right"
+                            Margin="10,5,5,0"
+                            CornerRadius="10"
+                            Style="{StaticResource button}">
+
+                        <TextBlock TextAlignment="Center"
+                                   Text="Go To"
+                                   VerticalAlignment="Center"
+                                   Foreground="AliceBlue"
+                                   FontSize="20"/>
+                        <Border.InputBindings>
+                            <MouseBinding Command="{Binding GoToCommand}"
+                                          MouseAction="LeftClick"/>
+                        </Border.InputBindings>
+                    </Border>
+                </Grid>
             </Border>
         </StackPanel>
     </StackPanel>
