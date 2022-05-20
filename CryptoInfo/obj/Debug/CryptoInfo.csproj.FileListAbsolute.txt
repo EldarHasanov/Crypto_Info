@@ -36,8 +36,8 @@ C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\bin\Debug\System.ValueTup
 C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\CryptoInfo.csproj.CopyComplete
 C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\Theme\MenuButtonTheme.baml
 C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\App.baml
-C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\Theme\TextBoxTheme.baml
 C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\Views\HomeView.g.cs
 C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\Views\HomeView.baml
 C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\Views\InfoView.g.cs
 C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\Views\InfoView.baml
+C:\WorkProjects\Test\CryptoInfo\Crypto_Info\CryptoInfo\obj\Debug\Theme\TextBoxTheme.baml

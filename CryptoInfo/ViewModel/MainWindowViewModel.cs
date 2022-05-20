@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using System.Net.Http;
-using System.Security.Cryptography.X509Certificates;
 using System.Windows;
 using System.Windows.Input;
 using CryptoInfo.Infrastructure.Commands;
 using CryptoInfo.Models;
 using CryptoInfo.ViewModel.Base;
 using System.Text.Json;
-using System.Windows.Media;
 using CryptoInfo.DAL;
 using CryptoInfo.Infrastructure.Commands.Base;
 
